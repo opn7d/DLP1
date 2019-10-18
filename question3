@@ -9,7 +9,6 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 
-# .895 vs .88811
 
 dataset = pd.read_csv("breastcancer.csv", header=None).values
 
@@ -17,7 +16,7 @@ labelencoder = LabelEncoder()
 dataset[:, 1] = labelencoder.fit_transform(dataset[:, 1])
 
 sc = StandardScaler()
-
+sc.fit(dataset[1:, 2:32])
 X_train, X_test, Y_train, Y_test = train_test_split(dataset[1:, 2:32], dataset[1:, 1], test_size=0.25, random_state=87)
 
 np.random.seed(155)
